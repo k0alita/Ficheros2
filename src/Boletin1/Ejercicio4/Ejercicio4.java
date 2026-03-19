@@ -1,15 +1,22 @@
-package Boletin1.Ejercicio3;
+package Boletin1.Ejercicio4;
 
-import java.io.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.Scanner;
 
-public class Ejercicio3 {
+public class Ejercicio4 {
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
+        Path ruta = Path.of("./src/Boletin1/Ejercicio4/salidaEj4.txt");
 
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("./src/Boletin1/Ejercicio3/salidaEj3.txt", true))) {
+        try (var bw = Files.newBufferedWriter(
+                ruta,
+                StandardOpenOption.CREATE,
+                StandardOpenOption.APPEND)) {
+
             String linea;
-
             System.out.println("Escribe líneas de texto. Escribe 'fin' para terminar:");
 
             while (true) {
