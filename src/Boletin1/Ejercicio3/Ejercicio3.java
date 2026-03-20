@@ -5,29 +5,22 @@ import java.util.Scanner;
 
 public class Ejercicio3 {
     public static void main(String[] args) {
-        Scanner teclado = new Scanner(System.in);
+        File salida = new File("./src/Boletin1/Ejercicio3/salidaEj3.txt");
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            PrintWriter pw = new PrintWriter(new FileWriter(salida, true))) {
 
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("./src/Boletin1/Ejercicio3/salidaEj3.txt", true))) {
+
             String linea;
-
-            System.out.println("Escribe líneas de texto. Escribe 'fin' para terminar:");
-
-            while (true) {
-                linea = teclado.nextLine();
-
-                if (linea.equals("fin")) {
-                    break;
-                }
-
-                bw.write(linea);
-                bw.newLine();
+            while ((linea = br.readLine()) != null && !linea.equalsIgnoreCase("fin")) {
+                pw.println(linea);
+                //pw.write(linea);
             }
 
-        } catch (IOException e) {
-            System.out.println("Error al escribir en el fichero: " + e.getMessage());
-        }
 
-        teclado.close();
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
 
