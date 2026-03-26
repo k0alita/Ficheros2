@@ -1,12 +1,10 @@
-package Ejercicio6;
+package Boletin1.Ejercicio6;
 
 import Boletin1.Ejercicio5.MiEntradaSalida;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.stream.Stream;
 
 public class Ejercicio6 {
     public static void main(String[] args) throws IOException {

@@ -38,6 +38,7 @@ public class Ejercicio7 {
                 case 5:
                     System.out.println("Opción 5: Buscar recursivo");
                     //La vamos a utilizar con Files.walk
+                    opcion5();
                     break;
                 case 6:
                     System.out.println("¡Saliendo del programa!");
@@ -148,6 +149,33 @@ public class Ejercicio7 {
                 System.out.println(e.getMessage());
             }
 
+        }
+    }
+
+    public static void opcion5() {
+        System.out.println("Introduce el directorio: \n");
+        Path p = Path.of(scanner.nextLine());
+
+        System.out.println("Introduce el nombre del fichero que quieres buscar");
+        String archivoABuscar = scanner.nextLine();
+
+        if (Files.isDirectory(p)) {
+            try (Stream<Path> ficheros = Files.walk(p)) {
+                ficheros.filter(path -> path.getFileName().toString().contains(archivoABuscar))
+                        .forEach(path -> {
+                            if (Files.isDirectory(p)) {
+                                System.out.printf("%s - directorio %n", path.getFileName());
+                            } else {
+                                try {
+                                    System.out.printf("%s %.2f kb %n", path.getFileName(), Files.size(path) / 1024.0);
+                                } catch (IOException e) {
+                                    System.out.println(e.getMessage());
+                                }
+                            }
+                        });
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 }
