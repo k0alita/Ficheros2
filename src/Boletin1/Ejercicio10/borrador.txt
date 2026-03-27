@@ -1,0 +1,6 @@
+F borrador2.txt
+F src/Boletin1/Ejercicio10/test/fichero.bla
+F src/Boletin1/Ejercicio10/test/fichero.bla asdf
+A src/Boletin1/Ejercicio10/test/fichero.bla asdf
+F src/Boletin1/Ejercicio10/test/prohibido/fichero.bla
+F H:/src/Boletin1/Ejercicio10/test/prohibido/fichero.bla
